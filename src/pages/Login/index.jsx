@@ -57,7 +57,7 @@ const Login = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Entrar {/*TODO: Trocar componente por logo do projeto*/}
+            Fazer Login
           </Typography>
           <Box
             component="form"
