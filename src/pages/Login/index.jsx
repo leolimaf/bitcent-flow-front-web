@@ -14,8 +14,15 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Copyright from "@/components/Copyright";
+import { useState } from "react";
+import RecuperarSenha from "../../components/RecuperarSenha";
 
 const Login = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -103,9 +110,14 @@ const Login = () => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link
+                    component={RouterLink}
+                    onClick={handleOpen}
+                    variant="body2"
+                  >
                     Esqueceu sua senha?
                   </Link>
+                  <RecuperarSenha open={open} handleClose={handleClose} />
                 </Grid>
                 <Grid item>
                   <Link

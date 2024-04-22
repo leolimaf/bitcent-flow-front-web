@@ -4,6 +4,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateField } from "@mui/x-date-pickers/DateField";
+import { MuiTelInput } from "mui-tel-input";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -14,8 +18,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Copyright from "@/components/Copyright";
+import { useState } from "react";
 
 const Cadastro = () => {
+  const [celular, setCelular] = useState("+55");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -93,6 +100,32 @@ const Cadastro = () => {
                     inputProps={{ maxLength: 80 }}
                   />
                 </Grid>
+                <Grid item xs={12} sm={6}>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateField
+                      required
+                      fullWidth
+                      id="birthdate"
+                      name="birthdate"
+                      autoComplete="bday"
+                      label="Data de Nascimento"
+                      format="DD/MM/YYYY"
+                    />
+                  </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <MuiTelInput
+                    required
+                    fullWidth
+                    id="cellphone"
+                    label="Celular"
+                    name="cellphone"
+                    autoComplete="tel-national"
+                    value={celular}
+                    onChange={(valor) => setCelular(valor)}
+                    inputProps={{ maxLength: 20 }}
+                  />
+                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -120,11 +153,11 @@ const Cadastro = () => {
                   <TextField
                     required
                     fullWidth
-                    name="repassword"
+                    name="password"
                     label="Confirmação de Senha"
                     type="password"
-                    id="repassword"
-                    autoComplete="new-repassword"
+                    id="password"
+                    autoComplete="new-password"
                     inputProps={{ maxLength: 80 }}
                   />
                 </Grid>
