@@ -32,8 +32,14 @@ const Login = () => {
     });
   };
 
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
   return (
-    <ThemeProvider theme={createTheme()}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
         sx={{

@@ -14,7 +14,7 @@ const Copyright = (props) => {
       {new Date().getFullYear()}
       {" - "}
       <Link color="inherit" component={RouterLink} to="/">
-        My Finances
+        Bitcent Flow
       </Link>
     </Typography>
   );

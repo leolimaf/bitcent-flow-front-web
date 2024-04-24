@@ -32,7 +32,11 @@ const Cadastro = () => {
     });
   };
 
-  const theme = createTheme();
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
 
   return (
     <ThemeProvider theme={theme}>
