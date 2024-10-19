@@ -30,18 +30,11 @@ mat-form-field {
     width: 100%; /* Garante que o input ocupe 100% da div */
 }
 
-::ng-deep .mat-mdc-form-field-subscript-wrapper {
-  display: none; /* Remove o wrapper dos hints e mensagens de erro */
-}
-
-::ng-deep .mat-mdc-form-field {
-  margin-bottom: 0px; /* Remove qualquer margem inferior aplicada */
-}
-
 
 button {
     grid-column: span 2; /* O botão ocupa 100% */
     width: 100%;
+    border-radius: 5px;
 }
 
 a {
