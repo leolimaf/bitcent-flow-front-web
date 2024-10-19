@@ -34,7 +34,7 @@
             <mat-label>Celular</mat-label>
             <input matInput formControlName="phoneNumber" />
             <mat-error *ngIf="registrationForm.get('phoneNumber')?.hasError('required')">
-              Informe seu número de celular para contato
+              Informe seu número de celular
             </mat-error>
         </mat-form-field>
     </div>
@@ -54,18 +54,27 @@
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">
+            Informe sua senha
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="form__confirmPassword">
         <mat-form-field appearance="outline">
           <mat-label>Confirmação de Senha</mat-label>
           <input matInput type="password" formControlName="confirmPassword" />
+          <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('passwordMismatch')">
+            As senha não estão iguais
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="form__acceptTerms">
         <mat-checkbox formControlName="acceptTerms">
           Concordo com os <a href="#termosdeuso">termos de uso</a> e de <a href="#termosdepoliticadeprivacidade">política de privacidade</a>
         </mat-checkbox>
+        <mat-error *ngIf="isSubmitted && registrationForm.get('acceptTerms')?.hasError('required')">
+          Você deve aceitar os termos para continuar
+        </mat-error>
       </div>
       <button mat-flat-button type="submit">
         Cadastrar

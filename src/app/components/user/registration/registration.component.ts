@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
+  isSubmitted: boolean = false;
   registrationForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder){
@@ -26,10 +27,7 @@ export class RegistrationComponent {
       birthdate: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [
-        Validators.required, 
-        Validators.minLength(6), 
-        Validators.pattern(/(?=.*[^a-zA-Z0-9])/)]],
+      password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
     },{validators:this.passwordMatchValidator});
@@ -39,15 +37,17 @@ export class RegistrationComponent {
     const password = control.get('password')
     const confirmPassword = control.get('confirmPassword')
 
-    if(password && confirmPassword && password.value !== confirmPassword)
+    if(password && confirmPassword && password.value !== confirmPassword.value){
       confirmPassword?.setErrors({passwordMismatch:true})
+    }
     else
-    confirmPassword?.setErrors(null)
+      confirmPassword?.setErrors(null)
 
     return null;
   }
 
   onSubmit(){
+    this.isSubmitted = true;
     console.log(this.registrationForm.value)
   }
 }
