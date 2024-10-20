@@ -26,12 +26,29 @@ export class UserComponent {
         next: (response: any) => {
           if(response.succeeded){
             this.resetFormSignal = true;
-            this.toastr.success('Você será redirecionado', 'Cadastro realizado!')
+            this.toastr.success('Você será redirecionado.', 'Cadastro realizado!')
           }
-          else
-            console.log('response:', response)
         },
-        error:err => console.log('error', err)
+        error:err => {
+          if(err.error.errors){
+            err.error.errors.forEach((x:any) => {
+              switch(x.code){
+                case "DuplicateUserName":
+                  break;
+                case "DuplicateEmail":
+                  this.toastr.error('Email já utilizado.', 'Falha ao cadastrar!')
+                  break;
+                default:
+                  this.toastr.error('Entre em contato.', 'Falha ao cadastrar!')
+                  console.log(x);
+                  break;
+              }
+            })
+          } else {
+            this.toastr.error('Serviço indisponível.', 'Falha ao cadastrar!')
+            console.log('error: ', err);
+          }
+        }
       });
   }
 }
