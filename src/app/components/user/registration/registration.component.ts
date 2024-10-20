@@ -61,8 +61,17 @@ export class RegistrationComponent {
 
   ngOnChanges() {
     if (this.resetFormSignal) {
+      // Redefine o formulário e limpa o estado de erro e toque
       this.registrationForm.reset();
       this.isSubmitted = false;
+    
+      // Marcar todos os controles como "não tocados" e "não modificados"
+      Object.keys(this.registrationForm.controls).forEach(controlName => {
+        const control = this.registrationForm.get(controlName);
+        control?.setErrors(null);  // Remove erros manuais
+        control?.markAsPristine();  // Marca como não modificado
+        control?.markAsUntouched(); // Marca como não tocado
+      });
     }
   }
 }
