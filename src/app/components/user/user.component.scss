@@ -6,27 +6,9 @@
     background-color: #e2e2e2;
   }
 
-  mat-card {
-    width: 768px;
-    padding: 20px;
-    box-shadow: 0 4px 8px #00000033;
-    text-align: center;
-  }
-
-mat-card-header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-top: 0;
-  }
-
- .mat-icon {
-  font-size: 48px;
-    width: 48px;
-    height: 48px;
-  }
-
-  .mat-headline-medium {
-    color: #3a3a3a;
-  }
+mat-card {
+  width: 768px;
+  padding: 20px;
+  box-shadow: 0 4px 8px #00000033;
+  text-align: center;
+}
