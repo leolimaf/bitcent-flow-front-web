@@ -64,7 +64,7 @@
           <mat-label>Confirmação de Senha</mat-label>
           <input matInput type="password" formControlName="confirmPassword" />
           <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('passwordMismatch')">
-            As senha não estão iguais
+            As senhas não estão iguais
           </mat-error>
         </mat-form-field>
       </div>

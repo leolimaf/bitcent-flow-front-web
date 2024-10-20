@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -7,6 +7,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { IUserRegistration } from '../../../interfaces/user-registration.interface';
 
 @Component({
   selector: 'app-registration',
@@ -17,8 +18,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
+  
   isSubmitted: boolean = false;
   registrationForm: FormGroup;
+
+  @Output('onSubmit') onSubmitEmit = new EventEmitter<IUserRegistration>();
 
   constructor(private formBuilder: FormBuilder){
     this.registrationForm = this.formBuilder.group({
@@ -48,6 +52,9 @@ export class RegistrationComponent {
 
   onSubmit(){
     this.isSubmitted = true;
+    if (this.registrationForm.valid) {
+      this.onSubmitEmit.emit(this.registrationForm.value);
+    }
     console.log(this.registrationForm.value)
   }
 }
