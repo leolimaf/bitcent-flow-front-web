@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -23,6 +23,7 @@ export class RegistrationComponent {
   registrationForm: FormGroup;
 
   @Output('onSubmit') onSubmitEmit = new EventEmitter<IUserRegistration>();
+  @Input() resetFormSignal: boolean = false;
 
   constructor(private formBuilder: FormBuilder){
     this.registrationForm = this.formBuilder.group({
@@ -56,5 +57,12 @@ export class RegistrationComponent {
       this.onSubmitEmit.emit(this.registrationForm.value);
     }
     console.log(this.registrationForm.value)
+  }
+
+  ngOnChanges() {
+    if (this.resetFormSignal) {
+      this.registrationForm.reset();
+      this.isSubmitted = false;
+    }
   }
 }

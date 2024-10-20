@@ -14,15 +14,18 @@ import { IUserRegistration } from '../../interfaces/user-registration.interface'
 })
 export class UserComponent {
 
-  constructor(private service: AuthService){}
-
   title: string = 'Cadastro'; // todo: trocar por string vazia, dps que adicionar rotas
+  resetFormSignal: boolean = false;
+
+  constructor(private service: AuthService){}
 
   handleRegistration(userRegistrationData: IUserRegistration) {
     this.service.createUser(userRegistrationData)
       .subscribe({
-        next: res => {
-          console.log(res)
+        next: (response: any) => {
+          if(response.succeeded){
+            this.resetFormSignal = true;
+          }
         },
         error:err => console.log('error', err)
       });

@@ -12,7 +12,7 @@
             <!-- </ng-container> -->
 
             <!-- <ng-template #registrationForm> -->
-                <app-registration (onSubmit)="handleRegistration($event)"></app-registration>
+                <app-registration (onSubmit)="handleRegistration($event)" [resetFormSignal]="resetFormSignal"></app-registration>
             <!-- </ng-template> -->
     </mat-card>
 </div>
