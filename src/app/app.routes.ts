@@ -6,8 +6,8 @@ import { LoginComponent } from './components/user/login/login.component';
 export const routes: Routes = [
     {path: '', component: UserComponent, 
         children: [
-            {path: 'signup', component: RegistrationComponent},
-            {path: 'signin', component: LoginComponent}
+            {path: 'cadastrar', component: RegistrationComponent},
+            {path: 'logar', component: LoginComponent}
         ]
     }
 ];

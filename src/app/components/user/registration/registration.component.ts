@@ -12,12 +12,24 @@ import { CommonModule } from '@angular/common';
 import { IUserRegistration } from '../../../interfaces/user-registration.interface';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatCheckboxModule, MatButtonModule],
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule, 
+    MatCardModule, 
+    MatIconModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatDatepickerModule, 
+    MatCheckboxModule, 
+    MatButtonModule,
+    RouterLink
+  ],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })

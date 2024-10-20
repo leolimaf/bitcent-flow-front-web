@@ -1,1 +1,36 @@
-<p>login works!</p>
+<mat-card-header>
+    <mat-card-title>
+        <mat-icon class="mat-icon" color="primary">account_box</mat-icon>
+        <h1 class="mat-headline-medium">Login</h1>
+    </mat-card-title>
+</mat-card-header>
+<div class="form-container">
+    <form [formGroup]="loginForm" class="form">
+        <div class="form__email">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email"/>
+              <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                Informe seu email
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__password">
+            <mat-form-field appearance="outline">
+              <mat-label>Senha</mat-label>
+              <input matInput type="password" formControlName="password" />
+              <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                Informe sua senha
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__saveAccount">
+          <mat-checkbox formControlName="saveAccount">
+            Lembrar desta conta
+          </mat-checkbox>
+        </div>
+        <button mat-flat-button type="submit">
+            Entrar
+        </button>
+    </form>
+</div>
