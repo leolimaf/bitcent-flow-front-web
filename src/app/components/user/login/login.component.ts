@@ -31,6 +31,7 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
 
+  isSubmitted: boolean = false;
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder){
@@ -39,5 +40,10 @@ export class LoginComponent {
       password: ['', Validators.required],
       saveAccount: [false]
     })
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    console.log(this.loginForm.value)
   }
 }

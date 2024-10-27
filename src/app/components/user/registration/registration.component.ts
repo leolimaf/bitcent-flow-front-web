@@ -64,7 +64,7 @@ export class RegistrationComponent {
     return null;
   }
 
-  handleRegistration(userRegistrationData: IUserRegistration) {
+  onSubmit(userRegistrationData: IUserRegistration) {
     this.isSubmitted = true;
     if (this.registrationForm.valid) {
       this.service.createUser(userRegistrationData)
