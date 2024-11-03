@@ -7,9 +7,9 @@ mat-card-header{
   }
 
 .mat-icon {
-font-size: 48px;
-  width: 48px;
-  height: 48px;
+font-size: 60px;
+width: 60px;
+height: 60px;
 }
 
 .mat-headline-medium {
@@ -60,4 +60,15 @@ a {
   color: #005cbb;
   font-size: 14px;
   text-decoration: none;
+}
+
+@media (max-width: 767px){
+  .form {
+    &__firstname,
+    &__lastname,
+    &__birthdate,
+    &__phonenumber {
+      grid-column: span 2; /* Esses campos ocupam 50% cada */
+    }
+  }
 }

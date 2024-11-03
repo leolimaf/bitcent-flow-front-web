@@ -76,7 +76,7 @@
       </div>
       <div class="form__acceptTerms">
         <mat-checkbox formControlName="acceptTerms">
-          Concordo com os <a href="#termosdeuso">termos de uso</a> e de <a href="#termosdepoliticadeprivacidade">política de privacidade</a>
+          Concordo com os <a href="register#termosdeuso">termos de uso</a> e de <a href="register#termosdepoliticadeprivacidade">política de privacidade</a>
         </mat-checkbox>
         <mat-error *ngIf="isSubmitted && registrationForm.get('acceptTerms')?.hasError('required')">
           Você deve aceitar os termos para continuar

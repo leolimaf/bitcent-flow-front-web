@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUserRegistration } from '../../interfaces/user-registration.interface';
 import { IUserLogin } from '../../interfaces/user-login.interface';
-
 @Injectable({
   providedIn: 'root'
 })
