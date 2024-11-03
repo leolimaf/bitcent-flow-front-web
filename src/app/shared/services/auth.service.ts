@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUserRegistration } from '../../interfaces/user-registration.interface';
+import { IUserLogin } from '../../interfaces/user-login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class AuthService {
 
   createUser(formData: IUserRegistration){
     return this.http.post(this.baseUrl+'/signup', formData)
+  }
+
+  signin(formData: IUserLogin){
+    return this.http.post(this.baseUrl+'/signin', formData)
   }
 }

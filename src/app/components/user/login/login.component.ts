@@ -9,7 +9,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../shared/services/auth.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { IUserLogin } from '../../../interfaces/user-login.interface';
 
 @Component({
   selector: 'app-login',
@@ -34,16 +36,34 @@ export class LoginComponent {
   isSubmitted: boolean = false;
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private service: AuthService, private router: Router, private formBuilder: FormBuilder, private toastr: ToastrService){
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
       saveAccount: [false]
-    })
+    },
+    { updateOn: 'submit' }
+    );
   }
 
-  onSubmit() {
+  onSubmit(userLoginData: IUserLogin) {
     this.isSubmitted = true;
-    console.log(this.loginForm.value)
+    if (this.loginForm.valid) {
+      this.service.signin(userLoginData)
+        .subscribe({
+          next: (response: any) => {
+            localStorage.setItem('token', response.token)
+            this.router.navigateByUrl('/dashboard')
+          },
+          error:err =>{
+            if(err.status == 400)
+              this.toastr.error('Email ou senha inválidos.', 'Falha ao conectar!')
+            else {
+              this.toastr.error('Serviço indisponível.', 'Falha ao conectar!')
+              console.log('error: ', err);
+            }
+          }
+        })
+    }
   }
 }
