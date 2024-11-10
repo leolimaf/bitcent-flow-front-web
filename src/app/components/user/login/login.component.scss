@@ -1,0 +1,67 @@
+mat-card-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 0;
+    }
+  
+  .mat-icon {
+  font-size: 60px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mat-headline-medium {
+    color: #3a3a3a;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    max-width: 480px;
+    justify-content: center;
+
+  &__email,
+  &__password {
+    flex: 1 1 100%; /* Ocupam 100% da largura */
+  }
+
+  &__saveAccount {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    flex: 1 1 100%;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.otherOptions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 8px;
+}
+
+.otherOptions a {
+    color: #005cbb;
+    font-size: 15px;
+}

@@ -1,0 +1,65 @@
+<mat-card-header>
+  <mat-card-title>
+      <mat-icon class="mat-icon" color="primary">account_box</mat-icon>
+      <h1 class="mat-headline-medium">Cadastro</h1>
+  </mat-card-title>
+</mat-card-header>
+<div class="form-container">
+  <form [formGroup]="registrationForm" class="form" (ngSubmit)="onSubmit(registrationForm.value)">
+    <div class="form__firstname">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+    </div>
+    <div class="form__lastname">
+        <mat-form-field appearance="outline">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput formControlName="lastName"/>
+        </mat-form-field>
+    </div>
+    <div class="form__birthdate">
+        <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthdate" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="form__phonenumber">
+        <mat-form-field appearance="outline">
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="phoneNumber" />
+        </mat-form-field>
+    </div>
+    <div class="form__email">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email"/>
+        </mat-form-field>
+      </div>
+      <div class="form__password">
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+      </div>
+      <div class="form__confirmPassword">
+        <mat-form-field appearance="outline">
+          <mat-label>Confirmação de Senha</mat-label>
+          <input matInput type="password" formControlName="confirmPassword" />
+        </mat-form-field>
+      </div>
+      <div class="form__acceptTerms">
+        <mat-checkbox formControlName="acceptTerms">
+          Concordo com os <a href="register#termosdeuso">termos de uso</a> e de <a href="register#termosdepoliticadeprivacidade">política de privacidade</a>
+        </mat-checkbox>
+      </div>
+      <button mat-flat-button type="submit">
+        Cadastrar
+      </button>
+  </form>
+  <div class="otherOptions">
+    <a routerLink="/login">Já possui uma conta? Entrar</a>
+  </div>
+</div>

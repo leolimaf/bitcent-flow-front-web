@@ -1,0 +1,96 @@
+mat-card-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 0;
+  }
+
+.mat-icon {
+font-size: 60px;
+width: 60px;
+height: 60px;
+}
+
+.mat-headline-medium {
+  color: #3a3a3a;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  max-width: 768px; /* Tamanho máximo do formulário */
+  justify-content: center;
+
+  &__firstname,
+  &__lastname,
+  &__birthdate,
+  &__phonenumber {
+    flex: 1 1 calc(50% - 16px); /* Ocupam 50% cada, com espaçamento */
+  }
+
+  .form__email,
+  &__password,
+  &__confirmPassword {
+    flex: 1 1 100%; /* Ocupam 100% */
+  }
+
+  &__acceptTerms {
+    flex: 1 1 100%; /* Ocupa 100% */
+    text-align: left;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  flex: 1 1 100%;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+a {
+  color: #005cbb;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.otherOptions {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 8px;
+}
+
+.otherOptions a {
+  color: #005cbb;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .form {
+    &__firstname,
+    &__lastname,
+    &__birthdate,
+    &__phonenumber {
+      flex: 1 1 100%; /* Campos ocupam 100% em telas menores */
+    }
+  }
+  .otherOptions {
+    justify-content: center;
+  }
+}
