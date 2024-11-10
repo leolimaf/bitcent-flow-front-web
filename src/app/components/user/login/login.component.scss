@@ -47,9 +47,16 @@ mat-card-header{
       border-radius: 5px;
       font-size: 18px;
   }
+
+  .otherOptions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
-  a {
+  .otherOptions a {
     color: #005cbb;
-    font-size: 14px;
-    text-decoration: none;
+    padding: 0 10px;
+    font-size: 15px;
+    margin-top: 15px;
   }

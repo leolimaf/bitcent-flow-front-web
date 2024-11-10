@@ -48,7 +48,6 @@ mat-form-field {
     width: 100%; /* Garante que o input ocupe 100% da div */
 }
 
-
 button {
     grid-column: span 2; /* O botão ocupa 100% */
     width: 100%;
@@ -60,6 +59,20 @@ a {
   color: #005cbb;
   font-size: 14px;
   text-decoration: none;
+}
+
+.otherOptions{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.otherOptions a {
+  color: #005cbb;
+  padding: 0 10px;
+  font-size: 15px;
+  margin-top: 15px;
+  text-decoration: underline;
 }
 
 @media (max-width: 767px){

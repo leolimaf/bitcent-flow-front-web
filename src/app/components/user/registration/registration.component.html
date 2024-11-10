@@ -10,18 +10,12 @@
         <mat-form-field appearance="outline">
           <mat-label>Nome</mat-label>
           <input matInput formControlName="firstName" />
-          <mat-error *ngIf="registrationForm.get('firstName')?.hasError('required')">
-            Informe seu nome
-          </mat-error>
         </mat-form-field>
     </div>
     <div class="form__lastname">
         <mat-form-field appearance="outline">
         <mat-label>Sobrenome</mat-label>
         <input matInput formControlName="lastName"/>
-        <mat-error *ngIf="registrationForm.get('lastName')?.hasError('required')">
-          Informe seu sobrenome
-        </mat-error>
         </mat-form-field>
     </div>
     <div class="form__birthdate">
@@ -30,60 +24,42 @@
             <input matInput [matDatepicker]="picker" formControlName="birthdate" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="registrationForm.get('birthdate')?.hasError('required')">
-              Informe sua data de nascimento
-            </mat-error>
         </mat-form-field>
     </div>
     <div class="form__phonenumber">
         <mat-form-field appearance="outline">
             <mat-label>Celular</mat-label>
             <input matInput formControlName="phoneNumber" />
-            <mat-error *ngIf="registrationForm.get('phoneNumber')?.hasError('required')">
-              Informe seu número de celular
-            </mat-error>
         </mat-form-field>
     </div>
     <div class="form__email">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput type="email" formControlName="email"/>
-          <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">
-            Informe seu email
-          </mat-error>
-          <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
-            Informe um e-mail válido
-          </mat-error>
         </mat-form-field>
       </div>
       <div class="form__password">
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput type="password" formControlName="password" />
-          <mat-error *ngIf="registrationForm.get('password')?.hasError('required')">
-            Informe sua senha
-          </mat-error>
         </mat-form-field>
       </div>
       <div class="form__confirmPassword">
         <mat-form-field appearance="outline">
           <mat-label>Confirmação de Senha</mat-label>
           <input matInput type="password" formControlName="confirmPassword" />
-          <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('passwordMismatch')">
-            As senhas não estão iguais
-          </mat-error>
         </mat-form-field>
       </div>
       <div class="form__acceptTerms">
         <mat-checkbox formControlName="acceptTerms">
           Concordo com os <a href="register#termosdeuso">termos de uso</a> e de <a href="register#termosdepoliticadeprivacidade">política de privacidade</a>
         </mat-checkbox>
-        <mat-error *ngIf="isSubmitted && registrationForm.get('acceptTerms')?.hasError('required')">
-          Você deve aceitar os termos para continuar
-        </mat-error>
       </div>
       <button mat-flat-button type="submit">
         Cadastrar
       </button>
   </form>
+  <div class="otherOptions">
+    <a routerLink="/login">Já possui uma conta? Entrar</a>
+  </div>
 </div>
