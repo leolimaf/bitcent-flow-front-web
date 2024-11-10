@@ -17,42 +17,48 @@ height: 60px;
 }
 
 .form-container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    gap: 16px;
-  
-    &__firstname,
-    &__lastname,
-    &__birthdate,
-    &__phonenumber {
-      grid-column: span 1; /* Esses campos ocupam 50% cada */
-    }
-  
-    &__email,
-    &__password,
-    &__confirmPassword {
-      grid-column: span 2; /* Esses campos ocupam 100% */
-    }
-  
-    &__acceptTerms {
-      grid-column: span 2; /* Checkbox ocupa 100% */
-      text-align: left;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  max-width: 768px; /* Tamanho máximo do formulário */
+  justify-content: center;
+
+  &__firstname,
+  &__lastname,
+  &__birthdate,
+  &__phonenumber {
+    flex: 1 1 calc(50% - 16px); /* Ocupam 50% cada, com espaçamento */
+  }
+
+  .form__email,
+  &__password,
+  &__confirmPassword {
+    flex: 1 1 100%; /* Ocupam 100% */
+  }
+
+  &__acceptTerms {
+    flex: 1 1 100%; /* Ocupa 100% */
+    text-align: left;
+  }
 }
 
 mat-form-field {
-    width: 100%; /* Garante que o input ocupe 100% da div */
+  width: 100%;
 }
 
 button {
-    grid-column: span 2; /* O botão ocupa 100% */
-    width: 100%;
-    border-radius: 5px;
-    font-size: 18px;
+  flex: 1 1 100%;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 18px;
 }
 
 a {
@@ -61,27 +67,30 @@ a {
   text-decoration: none;
 }
 
-.otherOptions{
+.otherOptions {
   display: flex;
   justify-content: right;
-  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 8px;
 }
 
 .otherOptions a {
   color: #005cbb;
-  padding: 0 10px;
   font-size: 15px;
-  margin-top: 15px;
   text-decoration: underline;
 }
 
-@media (max-width: 767px){
+@media (max-width: 480px) {
   .form {
     &__firstname,
     &__lastname,
     &__birthdate,
     &__phonenumber {
-      grid-column: span 2; /* Esses campos ocupam 50% cada */
+      flex: 1 1 100%; /* Campos ocupam 100% em telas menores */
     }
+  }
+  .otherOptions {
+    justify-content: center;
   }
 }
