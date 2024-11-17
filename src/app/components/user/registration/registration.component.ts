@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { IUserRegistration } from '../../../interfaces/user-registration.interface';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -33,12 +33,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
   
   isSubmitted: boolean = false;
   registrationForm: FormGroup;
 
-  constructor(private service: AuthService, private toastr: ToastrService, private formBuilder: FormBuilder){
+  constructor(private service: AuthService, private toastr: ToastrService, private formBuilder: FormBuilder, private router: Router){
     this.registrationForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -49,6 +49,10 @@ export class RegistrationComponent {
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
     },{validators:this.passwordMatchValidator});
+  }
+  ngOnInit(): void {
+    if(this.service.isLoggedIn())
+      this.router.navigateByUrl('/dashboard')
   }
 
   passwordMatchValidator: ValidatorFn = (control: AbstractControl): null => {

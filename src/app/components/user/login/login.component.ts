@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -31,7 +31,7 @@ import { IUserLogin } from '../../../interfaces/user-login.interface';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   isSubmitted: boolean = false;
   loginForm: FormGroup;
@@ -44,6 +44,10 @@ export class LoginComponent {
     }
     );
   }
+  ngOnInit(): void {
+    if(this.service.isLoggedIn())
+      this.router.navigateByUrl('/dashboard')
+  }
 
   onSubmit(userLoginData: IUserLogin) {
     this.isSubmitted = true;
@@ -51,7 +55,7 @@ export class LoginComponent {
       this.service.signin(userLoginData)
         .subscribe({
           next: (response: any) => {
-            localStorage.setItem('token', response.token)
+            this.service.saveToken(response.token);
             this.router.navigateByUrl('/dashboard')
           },
           error:err =>{
